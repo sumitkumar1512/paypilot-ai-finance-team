@@ -1,0 +1,305 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.6.2
+2 info using node@v25.2.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/sumitkumar/Documents/Codex/PAYPILOT APP/server/.npmrc
+5 silly config load:file:/Users/sumitkumar/.npmrc
+6 silly config load:file:/Users/sumitkumar/Documents/Codex/PAYPILOT APP/server/etc/npmrc
+7 verbose title npm install multer express-rate-limit helmet
+8 verbose argv "--cache" "" "install" "--prefix" "server" "multer" "express-rate-limit" "helmet"
+9 verbose logfile logs-max:10 dir:/Users/sumitkumar/Documents/Codex/PAYPILOT APP/_logs/2026-10-22T08_30_05_313Z-
+10 verbose logfile /Users/sumitkumar/Documents/Codex/PAYPILOT APP/_logs/2026-10-22T08_30_05_313Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest multer@*
+15 silly packumentCache full:https://registry.npmjs.org/multer cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/multer 1223ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/multer set size:undefined disposed:false
+18 silly fetch manifest express-rate-limit@*
+19 silly packumentCache full:https://registry.npmjs.org/express-rate-limit cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/npm 1288ms
+21 http fetch GET 200 https://registry.npmjs.org/express-rate-limit 68ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/express-rate-limit set size:undefined disposed:false
+23 silly fetch manifest express@^4.21.2
+24 silly packumentCache full:https://registry.npmjs.org/express cache-miss
+25 http fetch GET 200 https://registry.npmjs.org/express 55ms (cache updated)
+26 silly packumentCache full:https://registry.npmjs.org/express set size:undefined disposed:false
+27 silly fetch manifest helmet@*
+28 silly packumentCache full:https://registry.npmjs.org/helmet cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/helmet 35ms (cache miss)
+30 silly packumentCache full:https://registry.npmjs.org/helmet set size:undefined disposed:false
+31 silly placeDep ROOT express-rate-limit@8.7.1 OK for:  want: *
+32 silly placeDep ROOT helmet@8.3.0 OK for:  want: *
+33 silly placeDep ROOT multer@2.4.0 OK for:  want: *
+34 silly fetch manifest debug@^4.4.3
+35 silly packumentCache full:https://registry.npmjs.org/debug cache-miss
+36 silly fetch manifest ip-address@^10.2.0
+37 silly packumentCache full:https://registry.npmjs.org/ip-address cache-miss
+38 silly fetch manifest busboy@^1.6.0
+39 silly packumentCache full:https://registry.npmjs.org/busboy cache-miss
+40 silly fetch manifest append-field@^1.0.0
+41 silly packumentCache full:https://registry.npmjs.org/append-field cache-miss
+42 http fetch GET 200 https://registry.npmjs.org/ip-address 33ms (cache miss)
+43 silly packumentCache full:https://registry.npmjs.org/ip-address set size:undefined disposed:false
+44 http fetch GET 200 https://registry.npmjs.org/append-field 51ms (cache miss)
+45 silly packumentCache full:https://registry.npmjs.org/append-field set size:undefined disposed:false
+46 http fetch GET 200 https://registry.npmjs.org/debug 52ms (cache revalidated)
+47 silly packumentCache full:https://registry.npmjs.org/debug set size:195840 disposed:false
+48 http fetch GET 200 https://registry.npmjs.org/busboy 293ms (cache miss)
+49 silly packumentCache full:https://registry.npmjs.org/busboy set size:undefined disposed:false
+50 silly placeDep node_modules/express-rate-limit debug@4.4.3 OK for: express-rate-limit@8.7.1 want: ^4.4.3
+51 silly placeDep ROOT ip-address@10.7.4 OK for: express-rate-limit@8.7.1 want: ^10.2.0
+52 silly fetch manifest ms@^2.1.3
+53 silly packumentCache full:https://registry.npmjs.org/ms cache-miss
+54 http fetch GET 200 https://registry.npmjs.org/ms 29ms (cache revalidated)
+55 silly packumentCache full:https://registry.npmjs.org/ms set size:92208 disposed:false
+56 silly placeDep ROOT append-field@1.0.0 OK for: multer@2.4.0 want: ^1.0.0
+57 silly placeDep ROOT busboy@1.6.0 OK for: multer@2.4.0 want: ^1.6.0
+58 silly fetch manifest streamsearch@^1.1.0
+59 silly packumentCache full:https://registry.npmjs.org/streamsearch cache-miss
+60 http fetch GET 200 https://registry.npmjs.org/streamsearch 40ms (cache miss)
+61 silly packumentCache full:https://registry.npmjs.org/streamsearch set size:undefined disposed:false
+62 silly placeDep ROOT streamsearch@1.1.0 OK for: busboy@1.6.0 want: ^1.1.0
+63 silly placeDep node_modules/express-rate-limit ms@2.1.3 OK for: debug@4.4.3 want: ^2.1.3
+64 silly reify moves {}
+65 silly audit bulk request {
+65 silly audit   '@mongodb-js/saslprep': [ '1.5.0' ],
+65 silly audit   '@types/webidl-conversions': [ '7.0.3' ],
+65 silly audit   '@types/whatwg-url': [ '11.0.5' ],
+65 silly audit   accepts: [ '1.3.8' ],
+65 silly audit   'agent-base': [ '6.0.2' ],
+65 silly audit   debug: [ '4.4.3', '2.6.9' ],
+65 silly audit   ms: [ '2.1.3', '2.0.0' ],
+65 silly audit   'array-flatten': [ '1.1.1' ],
+65 silly audit   asynckit: [ '0.4.0' ],
+65 silly audit   axios: [ '1.20.0' ],
+65 silly audit   bcryptjs: [ '2.4.3' ],
+65 silly audit   'body-parser': [ '1.20.6' ],
+65 silly audit   bson: [ '6.10.4' ],
+65 silly audit   'buffer-equal-constant-time': [ '1.0.1' ],
+65 silly audit   bytes: [ '3.1.2' ],
+65 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+65 silly audit   'call-bound': [ '1.0.4' ],
+65 silly audit   'combined-stream': [ '1.0.8' ],
+65 silly audit   'content-disposition': [ '0.5.4' ],
+65 silly audit   'content-type': [ '1.0.5' ],
+65 silly audit   cookie: [ '0.7.2' ],
+65 silly audit   'cookie-signature': [ '1.0.7' ],
+65 silly audit   cors: [ '2.8.6' ],
+65 silly audit   'delayed-stream': [ '1.0.0' ],
+65 silly audit   depd: [ '2.0.0' ],
+65 silly audit   destroy: [ '1.2.0' ],
+65 silly audit   dotenv: [ '16.6.1' ],
+65 silly audit   'dunder-proto': [ '1.0.1' ],
+65 silly audit   'ecdsa-sig-formatter': [ '1.0.11' ],
+65 silly audit   'ee-first': [ '1.1.1' ],
+65 silly audit   encodeurl: [ '2.0.0' ],
+65 silly audit   'es-define-property': [ '1.0.1' ],
+65 silly audit   'es-errors': [ '1.3.0' ],
+65 silly audit   'es-object-atoms': [ '1.1.2' ],
+65 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+65 silly audit   'escape-html': [ '1.0.3' ],
+65 silly audit   etag: [ '1.8.1' ],
+65 silly audit   express: [ '4.22.2' ],
+65 silly audit   finalhandler: [ '1.3.2' ],
+65 silly audit   'follow-redirects': [ '1.16.0' ],
+65 silly audit   'form-data': [ '4.0.6' ],
+65 silly audit   forwarded: [ '0.2.0' ],
+65 silly audit   fresh: [ '0.5.2' ],
+65 silly audit   'function-bind': [ '1.1.2' ],
+65 silly audit   'get-intrinsic': [ '1.3.0' ],
+65 silly audit   'get-proto': [ '1.0.1' ],
+65 silly audit   gopd: [ '1.2.0' ],
+65 silly audit   'has-symbols': [ '1.1.0' ],
+65 silly audit   'has-tostringtag': [ '1.0.2' ],
+65 silly audit   hasown: [ '2.0.4' ],
+65 silly audit   'http-errors': [ '2.0.1' ],
+65 silly audit   'https-proxy-agent': [ '5.0.1' ],
+65 silly audit   'iconv-lite': [ '0.4.24' ],
+65 silly audit   inherits: [ '2.0.4' ],
+65 silly audit   'ipaddr.js': [ '1.9.1' ],
+65 silly audit   jsonwebtoken: [ '9.0.3' ],
+65 silly audit   jwa: [ '2.0.1' ],
+65 silly audit   jws: [ '4.0.1' ],
+65 silly audit   kareem: [ '2.6.3' ],
+65 silly audit   'lodash.includes': [ '4.3.0' ],
+65 silly audit   'lodash.isboolean': [ '3.0.3' ],
+65 silly audit   'lodash.isinteger': [ '4.0.4' ],
+65 silly audit   'lodash.isnumber': [ '3.0.3' ],
+65 silly audit   'lodash.isplainobject': [ '4.0.6' ],
+65 silly audit   'lodash.isstring': [ '4.0.1' ],
+65 silly audit   'lodash.once': [ '4.1.1' ],
+65 silly audit   'math-intrinsics': [ '1.1.0' ],
+65 silly audit   'media-typer': [ '0.3.0' ],
+65 silly audit   'memory-pager': [ '1.5.0' ],
+65 silly audit   'merge-descriptors': [ '1.0.3' ],
+65 silly audit   methods: [ '1.1.2' ],
+65 silly audit   mime: [ '1.6.0' ],
+65 silly audit   'mime-db': [ '1.52.0' ],
+65 silly audit   'mime-types': [ '2.1.35' ],
+65 silly audit   mongodb: [ '6.20.0' ],
+65 silly audit   'mongodb-connection-string-url': [ '3.0.2' ],
+65 silly audit   mongoose: [ '8.24.4' ],
+65 silly audit   mpath: [ '0.9.0' ],
+65 silly audit   mquery: [ '5.0.0' ],
+65 silly audit   negotiator: [ '0.6.3' ],
+65 silly audit   'object-assign': [ '4.1.1' ],
+65 silly audit   'object-inspect': [ '1.13.4' ],
+65 silly audit   'on-finished': [ '2.4.1' ],
+65 silly audit   parseurl: [ '1.3.3' ],
+65 silly audit   'path-to-regexp': [ '0.1.13' ],
+65 silly audit   'proxy-addr': [ '2.0.7' ],
+65 silly audit   'proxy-from-env': [ '2.1.0' ],
+65 silly audit   punycode: [ '2.3.1' ],
+65 silly audit   qs: [ '6.15.3' ],
+65 silly audit   'range-parser': [ '1.2.1' ],
+65 silly audit   'raw-body': [ '2.5.3' ],
+65 silly audit   razorpay: [ '2.9.8' ],
+65 silly audit   'safe-buffer': [ '5.2.1' ],
+65 silly audit   'safer-buffer': [ '2.1.2' ],
+65 silly audit   semver: [ '7.8.5' ],
+65 silly audit   send: [ '0.19.2' ],
+65 silly audit   'serve-static': [ '1.16.3' ],
+65 silly audit   setprototypeof: [ '1.2.0' ],
+65 silly audit   'side-channel': [ '1.1.1' ],
+65 silly audit   'side-channel-list': [ '1.0.1' ],
+65 silly audit   'side-channel-map': [ '1.0.1' ],
+65 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+65 silly audit   sift: [ '17.1.3' ],
+65 silly audit   'sparse-bitfield': [ '3.0.3' ],
+65 silly audit   statuses: [ '2.0.2' ],
+65 silly audit   toidentifier: [ '1.0.1' ],
+65 silly audit   tr46: [ '5.1.1' ],
+65 silly audit   'type-is': [ '1.6.18' ],
+65 silly audit   unpipe: [ '1.0.0' ],
+65 silly audit   'utils-merge': [ '1.0.1' ],
+65 silly audit   vary: [ '1.1.2' ],
+65 silly audit   'webidl-conversions': [ '7.0.0' ],
+65 silly audit   'whatwg-url': [ '14.2.0' ],
+65 silly audit   'express-rate-limit': [ '8.7.1' ],
+65 silly audit   helmet: [ '8.3.0' ],
+65 silly audit   multer: [ '2.4.0' ],
+65 silly audit   'ip-address': [ '10.7.4' ],
+65 silly audit   'append-field': [ '1.0.0' ],
+65 silly audit   busboy: [ '1.6.0' ],
+65 silly audit   streamsearch: [ '1.1.0' ]
+65 silly audit }
+66 http cache streamsearch@https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz 0ms (cache hit)
+67 http cache append-field@https://registry.npmjs.org/append-field/-/append-field-1.0.0.tgz 0ms (cache hit)
+68 http cache busboy@https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz 0ms (cache hit)
+69 http cache helmet@https://registry.npmjs.org/helmet/-/helmet-8.3.0.tgz 0ms (cache hit)
+70 http cache express-rate-limit@https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-8.7.1.tgz 0ms (cache hit)
+71 http cache ms@https://registry.npmjs.org/ms/-/ms-2.1.3.tgz 0ms (cache hit)
+72 http cache debug@https://registry.npmjs.org/debug/-/debug-4.4.3.tgz 0ms (cache hit)
+73 http cache multer@https://registry.npmjs.org/multer/-/multer-2.4.0.tgz 0ms (cache hit)
+74 http cache ip-address@https://registry.npmjs.org/ip-address/-/ip-address-10.7.4.tgz 0ms (cache hit)
+75 silly tarball no local data for streamsearch@https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz. Extracting by manifest.
+76 silly tarball no local data for append-field@https://registry.npmjs.org/append-field/-/append-field-1.0.0.tgz. Extracting by manifest.
+77 silly tarball no local data for busboy@https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz. Extracting by manifest.
+78 silly tarball no local data for express-rate-limit@https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-8.7.1.tgz. Extracting by manifest.
+79 silly tarball no local data for helmet@https://registry.npmjs.org/helmet/-/helmet-8.3.0.tgz. Extracting by manifest.
+80 silly tarball no local data for multer@https://registry.npmjs.org/multer/-/multer-2.4.0.tgz. Extracting by manifest.
+81 silly tarball no local data for ip-address@https://registry.npmjs.org/ip-address/-/ip-address-10.7.4.tgz. Extracting by manifest.
+82 http fetch GET 200 https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz 33ms (cache miss)
+83 http fetch GET 200 https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz 36ms (cache miss)
+84 http fetch GET 200 https://registry.npmjs.org/helmet/-/helmet-8.3.0.tgz 51ms (cache miss)
+85 http fetch GET 200 https://registry.npmjs.org/multer/-/multer-2.4.0.tgz 51ms (cache miss)
+86 http fetch GET 200 https://registry.npmjs.org/append-field/-/append-field-1.0.0.tgz 55ms (cache miss)
+87 http fetch GET 200 https://registry.npmjs.org/ip-address/-/ip-address-10.7.4.tgz 56ms (cache miss)
+88 http fetch GET 200 https://registry.npmjs.org/express-rate-limit/-/express-rate-limit-8.7.1.tgz 62ms (cache miss)
+89 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 264ms
+90 silly audit report {
+90 silly audit report   'follow-redirects': [
+90 silly audit report     {
+90 silly audit report       id: 1242604,
+90 silly audit report       url: 'https://github.com/advisories/GHSA-q3jh-wrc6-jgq8',
+90 silly audit report       title: 'follow-redirects array-form headers bypass cross-origin credential stripping',
+90 silly audit report       severity: 'high',
+90 silly audit report       vulnerable_versions: '>=1.16.0 <1.16.1',
+90 silly audit report       cwe: [Array],
+90 silly audit report       cvss: [Object]
+90 silly audit report     },
+90 silly audit report     {
+90 silly audit report       id: 1242605,
+90 silly audit report       url: 'https://github.com/advisories/GHSA-8r9p-f939-6h3c',
+90 silly audit report       title: 'follow-redirects sensitiveHeaders regex escaping can expose credential headers',
+90 silly audit report       severity: 'high',
+90 silly audit report       vulnerable_versions: '>=1.16.0 <1.16.1',
+90 silly audit report       cwe: [Array],
+90 silly audit report       cvss: [Object]
+90 silly audit report     }
+90 silly audit report   ],
+90 silly audit report   'proxy-addr': [
+90 silly audit report     {
+90 silly audit report       id: 1241210,
+90 silly audit report       url: 'https://github.com/advisories/GHSA-jqcg-44mw-7w3h',
+90 silly audit report       title: 'proxy-addr vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnet',
+90 silly audit report       severity: 'critical',
+90 silly audit report       vulnerable_versions: '>=1.1.0 <2.0.8',
+90 silly audit report       cwe: [Array],
+90 silly audit report       cvss: [Object]
+90 silly audit report     }
+90 silly audit report   ],
+90 silly audit report   qs: [
+90 silly audit report     {
+90 silly audit report       id: 1158506,
+90 silly audit report       url: 'https://github.com/advisories/GHSA-x5fp-wj9c-mxmx',
+90 silly audit report       title: 'qs array-limit bypass via bracket-key comma parsing',
+90 silly audit report       severity: 'moderate',
+90 silly audit report       vulnerable_versions: '>=6.14.2 <=6.15.3',
+90 silly audit report       cwe: [Array],
+90 silly audit report       cvss: [Object]
+90 silly audit report     },
+90 silly audit report     {
+90 silly audit report       id: 1158507,
+90 silly audit report       url: 'https://github.com/advisories/GHSA-4mjr-xmp4-gh2g',
+90 silly audit report       title: 'qs: Denial of Service via Attacker Controlled isBuffer',
+90 silly audit report       severity: 'moderate',
+90 silly audit report       vulnerable_versions: '>=2.2.5 <6.16.0',
+90 silly audit report       cwe: [Array],
+90 silly audit report       cvss: [Object]
+90 silly audit report     }
+90 silly audit report   ]
+90 silly audit report }
+91 silly packumentCache corgi:https://registry.npmjs.org/follow-redirects cache-miss
+92 silly packumentCache corgi:https://registry.npmjs.org/proxy-addr cache-miss
+93 silly packumentCache corgi:https://registry.npmjs.org/qs cache-miss
+94 http fetch GET 200 https://registry.npmjs.org/proxy-addr 29ms (cache miss)
+95 silly packumentCache corgi:https://registry.npmjs.org/proxy-addr set size:undefined disposed:false
+96 http fetch GET 200 https://registry.npmjs.org/qs 34ms (cache updated)
+97 silly packumentCache corgi:https://registry.npmjs.org/qs set size:undefined disposed:false
+98 http fetch GET 200 https://registry.npmjs.org/follow-redirects 38ms (cache miss)
+99 silly packumentCache corgi:https://registry.npmjs.org/follow-redirects set size:undefined disposed:false
+100 silly packumentCache corgi:https://registry.npmjs.org/axios cache-miss
+101 http fetch GET 200 https://registry.npmjs.org/axios 29ms (cache miss)
+102 silly packumentCache corgi:https://registry.npmjs.org/axios set size:undefined disposed:false
+103 silly packumentCache corgi:https://registry.npmjs.org/express cache-miss
+104 http fetch GET 200 https://registry.npmjs.org/express 30ms (cache updated)
+105 silly packumentCache corgi:https://registry.npmjs.org/express set size:undefined disposed:false
+106 silly packumentCache corgi:https://registry.npmjs.org/body-parser cache-miss
+107 http fetch GET 200 https://registry.npmjs.org/body-parser 37ms (cache updated)
+108 silly packumentCache corgi:https://registry.npmjs.org/body-parser set size:undefined disposed:false
+109 silly packumentCache corgi:https://registry.npmjs.org/express-rate-limit cache-miss
+110 http fetch GET 200 https://registry.npmjs.org/express-rate-limit 36ms (cache miss)
+111 silly packumentCache corgi:https://registry.npmjs.org/express-rate-limit set size:undefined disposed:false
+112 silly ADD node_modules/streamsearch
+113 silly ADD node_modules/busboy
+114 silly ADD node_modules/append-field
+115 silly ADD node_modules/ip-address
+116 silly ADD node_modules/multer
+117 silly ADD node_modules/helmet
+118 silly ADD node_modules/express-rate-limit
+119 silly ADD node_modules/express-rate-limit/node_modules/ms
+120 silly ADD node_modules/express-rate-limit/node_modules/debug
+121 verbose cwd /Users/sumitkumar/Documents/Codex/PAYPILOT APP
+122 verbose os Darwin 25.2.0
+123 verbose node v25.2.1
+124 verbose npm  v11.6.2
+125 notice
+125 notice New minor version of npm available! 11.6.2 -> 11.21.1
+125 notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+125 notice To update run: npm install -g npm@11.21.1
+125 notice  { force: true, Symbol(proc-log.meta): true }
+126 verbose exit 0
+127 info ok

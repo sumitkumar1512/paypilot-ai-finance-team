@@ -1,0 +1,11 @@
+amount,status,method,customer,createdAt,orderId,bank
+18500,SUCCESS,UPI,Orion Traders,2026-10-22T09:15:00.000Z,order_orion_1001,HDFC Bank
+42600,SUCCESS,CARD,BluePeak Solutions,2026-10-22T10:42:00.000Z,order_bluepeak_1002,ICICI Bank
+12999,FAILED,UPI,Orion Traders,2026-10-22T11:18:00.000Z,order_orion_1003,SBI
+7600,PENDING,NETBANKING,Northstar Foods,2026-10-22T12:05:00.000Z,order_northstar_1004,Axis Bank
+28500,SUCCESS,NETBANKING,BluePeak Solutions,2026-10-22T13:30:00.000Z,order_bluepeak_1005,HDFC Bank
+3499,FAILED,CARD,Northstar Foods,2026-10-22T14:20:00.000Z,order_northstar_1006,ICICI Bank
+15600,SUCCESS,UPI,Orion Traders,2026-10-22T15:10:00.000Z,order_orion_1007,SBI
+9999,PENDING,UPI,BluePeak Solutions,2026-10-22T16:45:00.000Z,order_bluepeak_1008,Axis Bank
+54800,SUCCESS,CARD,Northstar Foods,2026-10-22T17:25:00.000Z,order_northstar_1009,HDFC Bank
+22000,SUCCESS,UPI,Orion Traders,2026-10-22T18:05:00.000Z,order_orion_1010,ICICI Bank

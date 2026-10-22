@@ -1,0 +1,7 @@
+reference,amount,bank,settlement_date
+order_orion_1001,18500,HDFC Bank,2026-10-24
+order_bluepeak_1002,42600,ICICI Bank,2026-10-24
+order_bluepeak_1005,28500,HDFC Bank,2026-10-24
+order_orion_1007,15600,SBI,2026-10-25
+order_northstar_1009,54800,HDFC Bank,2026-10-25
+bank_ref_unmatched_8842,7300,Axis Bank,2026-10-25

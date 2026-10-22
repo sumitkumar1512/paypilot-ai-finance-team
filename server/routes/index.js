@@ -1,0 +1,14 @@
+import { Router } from 'express';
+import { login, register, updateRole } from '../controllers/authController.js';
+import { overview, health, receivables, transactionList } from '../controllers/dashboardController.js';
+import { askPayPilot, generateReminder, runAutomaticReminders, sendReminder } from '../controllers/aiController.js';
+import { createOrder, verifyPayment } from '../controllers/paymentController.js';
+import multer from 'multer'; import { createInvoice, createPaymentLink, customerDetail, customers, emailInvoice, emailWeeklyReport, financeOperations, importCsv, invoices, markNotificationRead, notifications, razorpayWebhook, reconcile, report, scheduleReport } from '../controllers/operationsController.js';
+const router = Router();
+const upload=multer({storage:multer.memoryStorage(),limits:{fileSize:5*1024*1024}});
+router.post('/auth/login', login); router.post('/auth/register', register); router.patch('/users/:id/role',updateRole);
+router.get('/dashboard', overview); router.get('/analytics/payment-health', health); router.get('/receivables', receivables); router.get('/transactions', transactionList);
+router.post('/ai/ask', askPayPilot); router.post('/actions/reminder', generateReminder); router.post('/actions/reminder/send', sendReminder); router.post('/actions/reminder/run',runAutomaticReminders);
+router.post('/payments/order', createOrder); router.post('/payments/verify', verifyPayment);
+router.post('/payments/webhook', razorpayWebhook); router.post('/imports/transactions',upload.single('file'),importCsv); router.get('/customers',customers); router.get('/customers/:id',customerDetail); router.get('/notifications',notifications); router.patch('/notifications/:id/read',markNotificationRead); router.get('/reports/export',report); router.post('/reports/email-weekly',emailWeeklyReport); router.get('/invoices',invoices); router.post('/invoices',createInvoice); router.post('/invoices/:id/payment-link',createPaymentLink); router.post('/invoices/:id/email',emailInvoice); router.post('/reconciliation/import',upload.single('file'),reconcile); router.get('/finance-operations',financeOperations); router.patch('/reports/schedule',scheduleReport);
+export default router;

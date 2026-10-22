@@ -1,0 +1,3 @@
+import React from 'react'; import { createRoot } from 'react-dom/client'; import App from './App'; import './styles.css'; import './interactions.css';
+class AppErrorBoundary extends React.Component { constructor(props){super(props);this.state={error:null}} static getDerivedStateFromError(error){return {error}} render(){if(this.state.error)return <main className="center-error"><b>PayPilot could not start.</b><span>{this.state.error.message}</span><button className="primary" onClick={()=>{localStorage.removeItem('paypilot-user');window.location.reload()}}>Reset saved session and reload</button></main>;return this.props.children} }
+createRoot(document.getElementById('root')).render(<AppErrorBoundary><App/></AppErrorBoundary>);

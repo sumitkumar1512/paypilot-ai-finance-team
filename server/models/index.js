@@ -1,0 +1,14 @@
+import mongoose from 'mongoose';
+const transactionSchema = new mongoose.Schema({ amount: Number, currency: String, status: String, method: String, customer: String, createdAt: Date, failureReason: String, orderId: String });
+const invoiceSchema = new mongoose.Schema({ invoiceNumber: String, customer: String, customerEmail: String, amount: Number, dueDate: Date, status: String, paymentLink: String, orderId: String, reminderHistory: [{ message:String, sentAt:Date, channel:String }] }, { timestamps:true });
+export const User = mongoose.model('User', new mongoose.Schema({ name: String, email: { type: String, unique: true }, password: String, role: { type:String, default:'OWNER' } }));
+export const Business = mongoose.model('Business', new mongoose.Schema({ name: String, ownerId: mongoose.Schema.Types.ObjectId }));
+export const Transaction = mongoose.model('Transaction', transactionSchema);
+export const Customer = mongoose.model('Customer', new mongoose.Schema({ name: String, email: String }));
+export const Invoice = mongoose.model('Invoice', invoiceSchema);
+export const Action = mongoose.model('Action', new mongoose.Schema({ type: String, content: String, status: String }, { timestamps: true }));
+export const AiLog = mongoose.model('AiLog', new mongoose.Schema({ question: String, tool: String, answer: String }, { timestamps: true }));
+export const Notification = mongoose.model('Notification', new mongoose.Schema({ title:String, message:String, severity:{type:String,default:'info'}, read:{type:Boolean,default:false}, action:String }, { timestamps:true }));
+export const AuditLog = mongoose.model('AuditLog', new mongoose.Schema({ actor:String, action:String, entity:String, detail:String }, { timestamps:true }));
+export const ReconciliationItem = mongoose.model('ReconciliationItem', new mongoose.Schema({ reference:String, amount:Number, status:String, note:String }, { timestamps:true }));
+export const Settlement = mongoose.model('Settlement', new mongoose.Schema({ amount:Number, status:String, expectedOn:Date, method:String }, { timestamps:true }));

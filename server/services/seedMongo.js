@@ -1,0 +1,3 @@
+import { Customer, Invoice, Transaction } from '../models/index.js';
+import { demoData } from '../utils/seedData.js';
+export async function seedMongo() { if (await Transaction.countDocuments()) return; await Customer.insertMany(demoData.customers); await Invoice.insertMany(demoData.invoices.map(i => ({ invoiceNumber:i.id, customer:i.customer, amount:i.amount, dueDate:i.dueDate, status:i.status }))); await Transaction.insertMany(demoData.transactions.map(t => ({ amount:t.amount, currency:t.currency, status:t.status, method:t.method, customer:t.customer, createdAt:t.createdAt, failureReason:t.failureReason, orderId:t.orderId }))); console.log('MongoDB seeded with PayPilot demo business data'); }

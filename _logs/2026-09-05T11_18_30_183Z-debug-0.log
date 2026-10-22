@@ -1,0 +1,24 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.6.2
+2 info using node@v25.2.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/sumitkumar/Documents/Codex/PAYPILOT APP/.npmrc
+5 silly config load:file:/Users/sumitkumar/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm run install:all
+8 verbose argv "--cache" "" "run" "install:all"
+9 verbose logfile logs-max:10 dir:/Users/sumitkumar/Documents/Codex/PAYPILOT APP/_logs/2026-09-05T11_18_30_183Z-
+10 verbose logfile /Users/sumitkumar/Documents/Codex/PAYPILOT APP/_logs/2026-09-05T11_18_30_183Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 200 https://registry.npmjs.org/npm 122ms
+13 verbose cwd /Users/sumitkumar/Documents/Codex/PAYPILOT APP
+14 verbose os Darwin 25.2.0
+15 verbose node v25.2.1
+16 verbose npm  v11.6.2
+17 notice
+17 notice New minor version of npm available! 11.6.2 -> 11.19.1
+17 notice Changelog: https://github.com/npm/cli/releases/tag/v11.19.1
+17 notice To update run: npm install -g npm@11.19.1
+17 notice  { force: true, Symbol(proc-log.meta): true }
+18 verbose exit 0
+19 info ok

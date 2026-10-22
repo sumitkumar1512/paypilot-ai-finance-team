@@ -1,0 +1,5 @@
+import { getPaymentHealth, getReceivables, getCashPosition, getTransactions, revenueTrend, money } from '../services/financeTools.js';
+export function overview(req, res) { const days = [7,30,90,180,365].includes(Number(req.query.period)) ? Number(req.query.period) : 7; const tx = getTransactions(days); const revenue = tx.filter(t=>t.status==='SUCCESS').reduce((s,t)=>s+t.amount,0); const health = getPaymentHealth(days); const receivables = getReceivables(); res.json({ revenue, transactions: tx.length, successRate: health.successRate, trend: revenueTrend(days), health, cash: getCashPosition(), receivables, recentTransactions: tx.slice(0, 7), format: money }); }
+export function health(req,res) { res.json(getPaymentHealth()); }
+export function receivables(req,res) { res.json(getReceivables()); }
+export function transactionList(req,res) { const query=String(req.query.search||'').toLowerCase();const items=getTransactions(Number(req.query.days) || 30);res.json(query?items.filter(t=>`${t.customer} ${t.method} ${t.status} ${t.orderId}`.toLowerCase().includes(query)):items); }
