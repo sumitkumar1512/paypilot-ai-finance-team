@@ -66,3 +66,17 @@
 .app-shell.dark .tag.failed,.app-shell.dark em.failed{background:#4a1e33!important;color:#ffafc9!important}
 .app-shell.dark .profile-popover,.app-shell.dark .notification-popover{background:#18213a;border:1px solid #465b91;box-shadow:0 18px 45px #00000080;color:#eef2ff}
 .app-shell.dark .search-error{background:#452033;color:#ffd6e4;border-color:#8b4665}
+
+/* Finance-operation feedback and audit trail need explicit surfaces (they originate in interactions.css). */
+.app-shell.dark .ops-message{background:linear-gradient(90deg,#1c2750,#19203a);border:1px solid #40558a;color:#dbe5ff}
+.app-shell.dark .audit{position:relative;overflow:hidden;background:linear-gradient(145deg,#18223d,#10182c);border:1px solid #354b7b;box-shadow:0 12px 28px #00000033}
+.app-shell.dark .audit:before{content:"";position:absolute;left:22px;top:54px;bottom:18px;width:1px;background:linear-gradient(#786cff,#2ec4b6,transparent)}
+.app-shell.dark .audit>p{margin-bottom:4px;color:#bbc8e8}
+.app-shell.dark .audit>div{position:relative;grid-template-columns:1.1fr 1.5fr auto;align-items:center;padding:11px 10px 11px 20px!important;border:1px solid #2e3e65!important;border-radius:8px;background:#121b31;color:#edf2ff}
+.app-shell.dark .audit>div:before{content:"";position:absolute;left:-5px;width:10px;height:10px;border-radius:50%;background:#8c7cff;border:2px solid #18223d;box-shadow:0 0 0 3px #8c7cff2b}
+.app-shell.dark .audit>div:nth-of-type(3):before{background:#3bd2be;box-shadow:0 0 0 3px #3bd2be24}
+.app-shell.dark .audit>div:nth-of-type(4):before{background:#f2bd62;box-shadow:0 0 0 3px #f2bd6224}
+.app-shell.dark .audit>div:hover{background:#202b49;border-color:#5871ae!important}
+.app-shell.dark .audit b{color:#f4f7ff;font-size:10px}
+.app-shell.dark .audit span,.app-shell.dark .audit small{color:#acb9d8!important}
+@media(max-width:620px){.app-shell.dark .audit:before{display:none}.app-shell.dark .audit>div{padding-left:12px!important}.app-shell.dark .audit>div:before{display:none}}
