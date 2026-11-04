@@ -22,6 +22,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use(express.json({limit:'1mb', verify:(req,res,buffer)=>{req.rawBody=buffer}})); app.use('/api',rateLimit({windowMs:15*60*1000,max:300,standardHeaders:true,legacyHeaders:false})); app.get('/api/health', (_,res)=>res.json({ status:'ok', mode:process.env.MONGO_URI?'mongo':'demo' })); app.use('/api',routes);
+app.use(express.json({limit:'1mb', verify:(req,res,buffer)=>{req.rawBody=buffer}})); app.use('/api',rateLimit({windowMs:15*60*1000,max:300,standardHeaders:true,legacyHeaders:false})); app.get('/api/health', (_,res)=>res.json({ status:'ok', mode:mongoose.connection.readyState===1?'mongo':'demo' })); app.use('/api',routes);
+app.use((error, req, res, next) => { console.error('API request failed:', error); if (res.headersSent) return next(error); const status = error.code === 'LIMIT_FILE_SIZE' ? 400 : (error.status || 500); res.status(status).json({ message: status === 400 ? 'File is too large. Maximum upload size is 5 MB.' : 'The request could not be completed. Please try again.' }); });
 if (process.env.MONGO_URI) mongoose.connect(process.env.MONGO_URI).then(async()=>{console.log('MongoDB connected');await seedMongo();}).catch(e=>console.warn('MongoDB unavailable; using demo data:',e.message));
 const port = process.env.PORT || 5056; app.listen(port,()=>console.log(`PayPilot API running on http://localhost:${port}`));
