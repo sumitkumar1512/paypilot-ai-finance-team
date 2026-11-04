@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const transactionSchema = new mongoose.Schema({ amount: Number, currency: String, status: String, method: String, customer: String, createdAt: Date, failureReason: String, orderId: String });
-const invoiceSchema = new mongoose.Schema({ invoiceNumber: String, customer: String, customerEmail: String, amount: Number, dueDate: Date, status: String, paymentLink: String, orderId: String, reminderHistory: [{ message:String, sentAt:Date, channel:String }] }, { timestamps:true });
+const invoiceSchema = new mongoose.Schema({ invoiceNumber: String, customer: String, customerEmail: String, businessName:String, amount: Number, dueDate: Date, status: String, paymentLink: String, orderId: String, reminderHistory: [{ message:String, sentAt:Date, channel:String }] }, { timestamps:true });
 export const User = mongoose.model('User', new mongoose.Schema({ name: String, email: { type: String, unique: true }, password: String, role: { type:String, default:'OWNER' }, businessId:{type:mongoose.Schema.Types.ObjectId,ref:'Business'} }, { timestamps:true }));
 export const Business = mongoose.model('Business', new mongoose.Schema({ name:{type:String,required:true}, type:{type:String,required:true}, ownerId:{type:mongoose.Schema.Types.ObjectId,ref:'User'}, phone:String, gstin:String, monthlyRevenue:String, paymentMethods:[String], address:String, currency:{type:String,default:'INR'} }, { timestamps:true }));
 export const Transaction = mongoose.model('Transaction', transactionSchema);

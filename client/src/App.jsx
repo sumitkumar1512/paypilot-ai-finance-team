@@ -22,7 +22,7 @@ function Dashboard({ user, onLogout }) {
   useEffect(() => { if (!data) return; const elements = document.querySelectorAll('[data-section]'); const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); setActive(entry.target.dataset.section); } }), { threshold: .18 }); elements.forEach(el => observer.observe(el)); return () => observer.disconnect(); }, [data]);
   const go = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const ask = async question => { setAsking(true); try { setAnswer(await api.ask(question)); } finally { setAsking(false); } };
-  const reminder = async (value, send = false) => send ? api.sendReminder(value) : api.reminder(value);
+  const reminder = async (value, send = false) => send ? api.sendReminder({...value,businessName:user.businessName||'Your Business'}) : api.reminder({invoiceId:value,businessName:user.businessName||'Your Business'});
   const toggleTransactions = async () => { if (!expanded && !allTransactions.length) setAllTransactions(await api.transactions()); setExpanded(value => !value); };
   const searchPayments = async () => { try { setSearchError(''); const results=await api.transactions(search);setAllTransactions(results);setExpanded(true);go('transactions'); } catch(e){setSearchError(e.message)} };
   if (error) return <div className="center-error">Could not load PayPilot: {error}</div>;
