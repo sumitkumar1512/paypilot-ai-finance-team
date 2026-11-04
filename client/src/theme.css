@@ -43,3 +43,26 @@
 .app-shell.dark .recharts-default-tooltip{background:#11182c!important;border:1px solid #4d6095!important;border-radius:10px!important;color:#f5f7ff!important;box-shadow:0 12px 30px #0000006b!important}
 .app-shell.dark .recharts-default-tooltip *{color:#f5f7ff!important}
 .app-shell.dark .recharts-tooltip-label{color:#b8c4e2!important}
+
+/* Deliberate depth: metrics, work areas and operational rows each get their own surface. */
+.app-shell.dark .stats .stat{position:relative;overflow:hidden;background:linear-gradient(145deg,#1b2544,#151c32);border-color:#33456f}
+.app-shell.dark .stats .stat:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:#8375ff}
+.app-shell.dark .stats .stat:nth-child(2){background:linear-gradient(145deg,#172c45,#14233a);border-color:#315472}
+.app-shell.dark .stats .stat:nth-child(2):before{background:#37c6d5}
+.app-shell.dark .stats .stat:nth-child(3){background:linear-gradient(145deg,#23304a,#1a233b);border-color:#48577a}
+.app-shell.dark .stats .stat:nth-child(3):before{background:#7ee0a7}
+.app-shell.dark .chart-panel{background:linear-gradient(145deg,#141c34,#10172a);border-color:#344774}
+.app-shell.dark .two-col .panel{background:linear-gradient(145deg,#19213a,#141b30)}
+.app-shell.dark .recent{background:linear-gradient(145deg,#171f37,#12192c);border-color:#354670}
+.app-shell.dark .checkout{background:linear-gradient(110deg,#1d2046,#131a32);border-color:#514b98}
+.app-shell.dark .invoice-manager{background:linear-gradient(145deg,#18213a,#121a2e)}
+.app-shell.dark .ops-grid article:nth-child(1){border-top:3px solid #5e94ff}
+.app-shell.dark .ops-grid article:nth-child(2){border-top:3px solid #42c6b5}
+.app-shell.dark .ops-grid article:nth-child(3){border-top:3px solid #a68cff}
+.app-shell.dark .transaction,.app-shell.dark .invoice,.app-shell.dark .managed-invoice,.app-shell.dark .mini-row,.app-shell.dark .recovery-row{margin-top:7px;padding:10px 9px;border:1px solid #2b385a;border-radius:9px;background:#11182b}
+.app-shell.dark .transaction:hover,.app-shell.dark .invoice:hover,.app-shell.dark .managed-invoice:hover,.app-shell.dark .mini-row:hover,.app-shell.dark .recovery-row:hover{background:#202b4a;border-color:#5970aa;transform:translateX(2px)}
+.app-shell.dark .tag.success,.app-shell.dark .tag.completed,.app-shell.dark em.completed{background:#123d38!important;color:#8cf0cf!important}
+.app-shell.dark .tag.pending,.app-shell.dark em.pending{background:#493711!important;color:#ffd878!important}
+.app-shell.dark .tag.failed,.app-shell.dark em.failed{background:#4a1e33!important;color:#ffafc9!important}
+.app-shell.dark .profile-popover,.app-shell.dark .notification-popover{background:#18213a;border:1px solid #465b91;box-shadow:0 18px 45px #00000080;color:#eef2ff}
+.app-shell.dark .search-error{background:#452033;color:#ffd6e4;border-color:#8b4665}
