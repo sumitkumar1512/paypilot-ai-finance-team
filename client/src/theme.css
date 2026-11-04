@@ -1,2 +1,45 @@
 .theme-toggle{border:0;background:#fff;width:37px;height:37px;border-radius:10px;color:#706c83;font-size:17px;box-shadow:0 2px 10px #3d39550b;cursor:pointer}
-.app-shell.dark{background:#121120;color:#ebeaf5}.app-shell.dark .dashboard{background:#121120}.app-shell.dark .stat,.app-shell.dark .panel,.app-shell.dark .chart-panel{background:#1d1b30;border-color:#34314c;color:#f2f1fa}.app-shell.dark h1 span,.app-shell.dark .stat p,.app-shell.dark .eyebrow,.app-shell.dark .method small,.app-shell.dark .invoice small,.app-shell.dark .transaction small{color:#aba8bd}.app-shell.dark .method{background:#28253d}.app-shell.dark .range,.app-shell.dark .text-button,.app-shell.dark .theme-toggle,.app-shell.dark .bell{background:#29263d;border-color:#45415f;color:#e4e1f3}.app-shell.dark .transaction,.app-shell.dark .invoice{border-color:#34314c}.app-shell.dark .invoice:hover{background:#25223a}.app-shell.dark .payment-icon{background:#302c50}.app-shell.dark .user-avatar{background:#3d3766;color:#e0dcff}.app-shell.dark .status-dot{background:#173b35;color:#74d4ba}.app-shell.dark .search-input{background:#29263d;color:#eee;border-color:#45415f}.app-shell.dark footer{color:#aaa7ba}
+
+/* Theme-specific overrides. Keeps financial data legible in low light. */
+.app-shell.dark{color-scheme:dark;background:#0c1020;color:#f3f6ff}
+.app-shell.dark .dashboard{background:radial-gradient(circle at 78% 0%,#1b2550 0,transparent 31%),#0c1020}
+.app-shell.dark aside{background:linear-gradient(180deg,#11162b,#0c1020);border-color:#293457}
+.app-shell.dark .brand,.app-shell.dark h1,.app-shell.dark h2,.app-shell.dark h3,.app-shell.dark h4,.app-shell.dark strong{color:#f5f7ff}
+.app-shell.dark .stat,.app-shell.dark .panel,.app-shell.dark .chart-panel,.app-shell.dark .health-panel{background:#171d33;border-color:#2a3658;color:#f3f6ff;box-shadow:0 14px 36px #00000029}
+.app-shell.dark .stat:hover,.app-shell.dark .panel:hover,.app-shell.dark .chart-panel:hover{border-color:#5067a5}
+.app-shell.dark h1 span,.app-shell.dark .stat p,.app-shell.dark .eyebrow,.app-shell.dark .method small,.app-shell.dark .invoice small,.app-shell.dark .transaction small,.app-shell.dark .managed-invoice small,.app-shell.dark .mini-row small,.app-shell.dark .recovery-row small,.app-shell.dark .permission-note,.app-shell.dark .ops-message,.app-shell.dark .audit div{color:#aeb9d5}
+.app-shell.dark .method,.app-shell.dark .customer-grid article,.app-shell.dark .ops-grid article,.app-shell.dark .recovery-queue,.app-shell.dark .invoice-manager{background:#1e2640;border-color:#344269}
+.app-shell.dark .range,.app-shell.dark .text-button,.app-shell.dark .theme-toggle,.app-shell.dark .bell,.app-shell.dark .search-button{background:#222b48;border-color:#3a4a76;color:#e9edff}
+.app-shell.dark .range:hover,.app-shell.dark .text-button:hover,.app-shell.dark .theme-toggle:hover,.app-shell.dark .bell:hover{background:#303b62;color:#fff}
+.app-shell.dark .range.active{background:#6956db;border-color:#8f82f0;color:#fff;box-shadow:0 6px 18px #6b58d766}
+.app-shell.dark .search-input,.app-shell.dark input,.app-shell.dark select,.app-shell.dark textarea{background:#11182c;color:#f4f7ff;border-color:#3b4a72}
+.app-shell.dark .search-input::placeholder,.app-shell.dark input::placeholder,.app-shell.dark textarea::placeholder{color:#8997b8}
+.app-shell.dark .search-input:focus,.app-shell.dark input:focus,.app-shell.dark select:focus,.app-shell.dark textarea:focus{border-color:#8b7cff;box-shadow:0 0 0 3px #8b7cff2b}
+.app-shell.dark .transaction,.app-shell.dark .invoice,.app-shell.dark .managed-invoice,.app-shell.dark .mini-row,.app-shell.dark .recovery-row{border-color:#2d3a5c;color:#eef2ff}
+.app-shell.dark .transaction:hover,.app-shell.dark .invoice:hover,.app-shell.dark .managed-invoice:hover,.app-shell.dark .mini-row:hover,.app-shell.dark .recovery-row:hover{background:#202944}
+.app-shell.dark .payment-icon{background:#29355a;color:#bcb3ff}
+.app-shell.dark .user-avatar{background:#37306c;color:#f0edff}
+.app-shell.dark .status-dot{background:#123f3a;color:#8cf0cf}
+.app-shell.dark .ask-card{background:linear-gradient(135deg,#33236c,#1f2855);border-color:#6354bd;color:#f8f7ff}
+.app-shell.dark .ask-card p,.app-shell.dark .ai-answer,.app-shell.dark .mix-detail,.app-shell.dark .checkout-status{color:#dbe2ff}
+.app-shell.dark .prompt-chips button{background:#222b4b;border-color:#495a90;color:#e7ebff}
+.app-shell.dark .prompt-chips button:hover{background:#394876}
+.app-shell.dark .anomaly{background:#351c2c;border-color:#8b3c62;color:#ffe9f1}
+.app-shell.dark .anomaly p{color:#f1b9cb}
+.app-shell.dark .alert-icon{background:#592946;color:#ffb2ce}
+.app-shell.dark .checkout-controls,.app-shell.dark .invoice-form{background:#151c31;border-color:#304069}
+.app-shell.dark .audit{border-color:#344269}
+.app-shell.dark .audit div+div{border-color:#2d3a5c}
+.app-shell.dark .nav-item{color:#b5c0dc}
+.app-shell.dark .nav-item:hover{background:#202a49;color:#fff}
+.app-shell.dark .nav-item.active{background:#6d5be2;color:#fff;box-shadow:0 8px 22px #46388d70}
+.app-shell.dark .sidebar-section{color:#8e9cbd}
+.app-shell.dark footer{color:#aab6d1;border-color:#293457}
+
+/* Recharts SVG elements do not inherit regular text colour, so set them explicitly. */
+.app-shell.dark .recharts-text,.app-shell.dark .recharts-cartesian-axis-tick-value,.app-shell.dark .recharts-legend-item-text{fill:#b8c4e2!important;color:#b8c4e2!important}
+.app-shell.dark .recharts-cartesian-axis-line,.app-shell.dark .recharts-cartesian-axis-tick-line{stroke:#4a5b86!important}
+.app-shell.dark .recharts-cartesian-grid line{stroke:#2c385d!important}
+.app-shell.dark .recharts-default-tooltip{background:#11182c!important;border:1px solid #4d6095!important;border-radius:10px!important;color:#f5f7ff!important;box-shadow:0 12px 30px #0000006b!important}
+.app-shell.dark .recharts-default-tooltip *{color:#f5f7ff!important}
+.app-shell.dark .recharts-tooltip-label{color:#b8c4e2!important}
