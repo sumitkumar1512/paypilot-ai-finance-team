@@ -26,7 +26,7 @@ function Dashboard({ user, onLogout }) {
   const ask = async question => { setAsking(true); try { setAnswer(await api.ask(question)); } finally { setAsking(false); } };
   const reminder = async (value, send = false) => send ? api.sendReminder({...value,businessName:user.businessName||'Your Business'}) : api.reminder({invoiceId:value,businessName:user.businessName||'Your Business'});
   const toggleTransactions = async () => { if (!expanded && !allTransactions.length) setAllTransactions(await api.transactions()); setExpanded(value => !value); };
-  const searchPayments = async () => { try { setSearchError(''); const results=await api.transactions(search);setAllTransactions(results);setExpanded(true);go('transactions'); } catch(e){setSearchError(e.message)} };
+  const searchPayments = async () => { try { setSearchError(''); const results=await api.transactions(search);setAllTransactions(results);setExpanded(true);setPage('dashboard');setActive('transactions');setTimeout(()=>go('transactions'),0); } catch(e){setSearchError(e.message)} };
   if (error) return <div className="center-error">Could not load PayPilot: {error}</div>;
   if (!data) return <div className="loading"><div className="loader"/>Loading your financial command center…</div>;
   const periodLabel = ({7:'Last 7 days',30:'Past month',90:'Past 3 months',180:'Past 6 months',365:'Past year'})[period];
