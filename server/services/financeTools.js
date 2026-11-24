@@ -25,8 +25,30 @@ export function getCashForecast() {
   const overdue = invoices.filter(invoice => invoice.status === 'OVERDUE').reduce((sum, invoice) => sum + invoice.amount, 0);
   const scheduled = invoices.filter(invoice => new Date(invoice.dueDate) >= today && new Date(invoice.dueDate) <= end).reduce((sum, invoice) => sum + invoice.amount, 0);
   const sevenDay = invoices.filter(invoice => { const due = new Date(invoice.dueDate); const limit = new Date(today); limit.setDate(limit.getDate() + 7); return due >= today && due <= limit; }).reduce((sum, invoice) => sum + invoice.amount, 0);
-  const expected = scheduled + overdue * .45;
-  return { expected: Math.round(expected), sevenDay, overdue, confidence: overdue ? 'Moderate' : 'High', collectionRate: overdue ? 45 : 90, upcoming: invoices.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0,4) };
+  const collectionRate = overdue ? 45 : 90;
+  const expected = scheduled + overdue * (collectionRate / 100);
+  // Use completed-payment history as a run-rate, then add the invoices that
+  // are already scheduled for collection. It makes the horizon view react to
+  // imported payments instead of being a set of fixed display values.
+  const successfulLast90 = recent(90).filter(transaction => transaction.status === 'SUCCESS');
+  const dailyRunRate = successfulLast90.reduce((sum, transaction) => sum + transaction.amount, 0) / 90;
+  const available = getCashPosition().available;
+  const horizons = [30, 60, 90];
+  const projections = horizons.map(days => {
+    const horizon = new Date(today); horizon.setDate(horizon.getDate() + days);
+    const dueWithinHorizon = invoices.filter(invoice => {
+      const due = new Date(invoice.dueDate);
+      return due >= today && due <= horizon;
+    }).reduce((sum, invoice) => sum + invoice.amount, 0);
+    const overdueRecovery = overdue * (collectionRate / 100) * Math.min(1, days / 30);
+    const runRateInflow = dailyRunRate * days;
+    const inflow = Math.round(runRateInflow + dueWithinHorizon + overdueRecovery);
+    // Until expense integrations are connected, costs are transparently
+    // modelled as a conservative percentage of historic cash-in.
+    const outflow = Math.round(runRateInflow * 0.58);
+    return { days, inflow, outflow, closing: available + inflow - outflow };
+  });
+  return { expected: Math.round(expected), sevenDay, overdue, confidence: overdue ? 'Moderate' : 'High', collectionRate, projections, upcoming: invoices.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0,4) };
 }
 export function getCustomerRiskScores() {
   return demoData.customers.map(customer => {
