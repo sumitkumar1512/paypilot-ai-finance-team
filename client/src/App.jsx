@@ -9,6 +9,7 @@ import PaymentMix from './components/PaymentMix';
 import Checkout from './components/Checkout';
 import Operations from './components/Operations';
 import InvoiceManager from './components/InvoiceManager';
+import CashForecast from './components/CashForecast';
 
 const money = n => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', notation: 'compact', maximumFractionDigits: 2 }).format(n);
 const navItems = [['overview','▦','Overview'],['transactions','◴','Transactions'],['payment-health','◌','Payment health'],['receivables','◫','Receivables'],['manage-invoices','▤','Manage invoices'],['finance-operations','✉','Reminder center'],['finance-operations','◈','Finance operations'],['ai-insights','✦','AI insights']];
@@ -43,6 +44,7 @@ function Dashboard({ user, onLogout }) {
     <section className="chart-panel scroll-section" data-section="overview"><div className="panel-heading"><div><p className="eyebrow">REVENUE TREND</p><h2>Successful payments over time</h2></div><select className="range" value={period} onChange={e=>setPeriod(Number(e.target.value))}><option value="7">Last 7 days</option><option value="30">Past month</option><option value="90">Past 3 months</option><option value="180">Past 6 months</option><option value="365">Past year</option></select></div><ResponsiveContainer width="100%" height={260}><AreaChart data={data.trend}><defs><linearGradient id="revenue" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor="#7266f0" stopOpacity={.35}/><stop offset="100%" stopColor="#7266f0" stopOpacity={0}/></linearGradient></defs><XAxis dataKey="day" axisLine={false} tickLine={false} interval={period === 30 ? 2 : 0} minTickGap={0} tick={{ fontSize: 10 }}/><YAxis hide/><Tooltip formatter={v=>money(v)} cursor={{stroke:'#dcd9ff'}}/><Area type="monotone" dataKey="revenue" stroke="#6658e8" strokeWidth={3} fill="url(#revenue)"/></AreaChart></ResponsiveContainer></section>
     <div className="two-col"><div id="payment-health" data-section="payment-health" className="scroll-section"><PaymentHealth health={data.health}/></div><div id="receivables" data-section="receivables" className="scroll-section"><div id="reminder-center" data-section="reminder-center"><Receivables data={data.receivables} onReminder={reminder} canRemind={canRemind}/></div></div></div>
     <PaymentMix health={data.health}/>
+    <CashForecast forecast={data.forecast} risks={data.customerRisk}/>
     <Checkout/>
     <div id="manage-invoices" data-section="manage-invoices" className="scroll-section"><InvoiceManager canModify={canModify}/></div>
     <div id="finance-operations" data-section="finance-operations" className="scroll-section"><Operations user={user} canModify={canModify} canRemind={canRemind} refresh={()=>loadDashboard(period)}/></div>

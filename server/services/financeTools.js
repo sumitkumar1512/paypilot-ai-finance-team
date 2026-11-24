@@ -18,6 +18,27 @@ export function getReceivables() {
 }
 export function getCashPosition() { return { available: 842000, inflowExpected: 284000, status: 'healthy' }; }
 export function getCustomers() { return demoData.customers; }
+export function getCashForecast() {
+  const today = new Date();
+  const end = new Date(today); end.setDate(end.getDate() + 30);
+  const invoices = demoData.invoices.filter(invoice => ['DUE', 'OVERDUE', 'SENT'].includes(invoice.status));
+  const overdue = invoices.filter(invoice => invoice.status === 'OVERDUE').reduce((sum, invoice) => sum + invoice.amount, 0);
+  const scheduled = invoices.filter(invoice => new Date(invoice.dueDate) >= today && new Date(invoice.dueDate) <= end).reduce((sum, invoice) => sum + invoice.amount, 0);
+  const sevenDay = invoices.filter(invoice => { const due = new Date(invoice.dueDate); const limit = new Date(today); limit.setDate(limit.getDate() + 7); return due >= today && due <= limit; }).reduce((sum, invoice) => sum + invoice.amount, 0);
+  const expected = scheduled + overdue * .45;
+  return { expected: Math.round(expected), sevenDay, overdue, confidence: overdue ? 'Moderate' : 'High', collectionRate: overdue ? 45 : 90, upcoming: invoices.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0,4) };
+}
+export function getCustomerRiskScores() {
+  return demoData.customers.map(customer => {
+    const invoices = demoData.invoices.filter(invoice => invoice.customer === customer.name);
+    const transactions = demoData.transactions.filter(transaction => transaction.customer === customer.name);
+    const overdue = invoices.filter(invoice => invoice.status === 'OVERDUE');
+    const failed = transactions.filter(transaction => transaction.status === 'FAILED');
+    const score = Math.min(100, overdue.length * 24 + failed.length * 2 + (overdue.some(invoice => (Date.now() - new Date(invoice.dueDate)) / 86400000 > 7) ? 18 : 0));
+    const level = score >= 55 ? 'HIGH' : score >= 25 ? 'MEDIUM' : 'LOW';
+    return { ...customer, score, level, outstanding: invoices.reduce((sum, invoice) => sum + invoice.amount, 0), overdueCount: overdue.length, failedPayments: failed.length, reason: overdue.length ? `${overdue.length} overdue invoice${overdue.length > 1 ? 's' : ''}` : failed.length ? `${failed.length} failed payment attempts` : 'Reliable payment history' };
+  }).sort((a,b) => b.score - a.score);
+}
 export function getPaymentHealth(days = 7) {
   const current = recent(days), historical = demoData.transactions.filter(t => { const age = (Date.now() - new Date(t.createdAt)) / 86400000; return age >= days && age < days * 2; });
   const rate = ts => ts.length ? (ts.filter(t => t.status === 'FAILED').length / ts.length) * 100 : 0;
