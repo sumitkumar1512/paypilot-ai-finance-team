@@ -11,20 +11,25 @@ export function getRevenue(days = 7) {
 }
 export function getTransactions(days = 30) { return recent(days); }
 export function getFailedPayments(days = 7) { return recent(days).filter(t => t.status === 'FAILED'); }
-export function getReceivables() {
-  const outstanding = demoData.invoices.reduce((s, i) => s + i.amount, 0);
-  const overdue = demoData.invoices.filter(i => i.status === 'OVERDUE');
-  return { outstanding, overdueAmount: overdue.reduce((s, i) => s + i.amount, 0), invoices: demoData.invoices };
+export function getReceivables(invoices = demoData.invoices) {
+  const outstanding = invoices.filter(invoice => invoice.status !== 'PAID').reduce((s, i) => s + i.amount, 0);
+  const overdue = invoices.filter(i => i.status === 'OVERDUE');
+  return { outstanding, overdueAmount: overdue.reduce((s, i) => s + i.amount, 0), invoices };
 }
 export function getCashPosition() { return { available: 842000, inflowExpected: 284000, status: 'healthy' }; }
 export function getCustomers() { return demoData.customers; }
-export function getCashForecast() {
-  const today = new Date();
+export function getCashForecast(invoiceSource = demoData.invoices) {
+  // Invoice due dates are date-only values. Normalise the clock portion so a
+  // payment due today is not incorrectly treated as already in the past.
+  const today = new Date(); today.setHours(0, 0, 0, 0);
   const end = new Date(today); end.setDate(end.getDate() + 30);
-  const invoices = demoData.invoices.filter(invoice => ['DUE', 'OVERDUE', 'SENT'].includes(invoice.status));
+  // An invoice can remain DRAFT when email delivery is unavailable. It is
+  // still an issued receivable, so its due date must drive the forecast.
+  const invoices = invoiceSource.filter(invoice => ['DRAFT', 'DUE', 'OVERDUE', 'SENT'].includes(invoice.status));
   const overdue = invoices.filter(invoice => invoice.status === 'OVERDUE').reduce((sum, invoice) => sum + invoice.amount, 0);
-  const scheduled = invoices.filter(invoice => new Date(invoice.dueDate) >= today && new Date(invoice.dueDate) <= end).reduce((sum, invoice) => sum + invoice.amount, 0);
-  const sevenDay = invoices.filter(invoice => { const due = new Date(invoice.dueDate); const limit = new Date(today); limit.setDate(limit.getDate() + 7); return due >= today && due <= limit; }).reduce((sum, invoice) => sum + invoice.amount, 0);
+  const dueOn = value => { const due = new Date(value); due.setHours(0, 0, 0, 0); return due; };
+  const scheduled = invoices.filter(invoice => dueOn(invoice.dueDate) >= today && dueOn(invoice.dueDate) <= end).reduce((sum, invoice) => sum + invoice.amount, 0);
+  const sevenDay = invoices.filter(invoice => { const due = dueOn(invoice.dueDate); const limit = new Date(today); limit.setDate(limit.getDate() + 7); return due >= today && due <= limit; }).reduce((sum, invoice) => sum + invoice.amount, 0);
   const collectionRate = overdue ? 45 : 90;
   const expected = scheduled + overdue * (collectionRate / 100);
   // Use completed-payment history as a run-rate, then add the invoices that
@@ -37,7 +42,7 @@ export function getCashForecast() {
   const projections = horizons.map(days => {
     const horizon = new Date(today); horizon.setDate(horizon.getDate() + days);
     const dueWithinHorizon = invoices.filter(invoice => {
-      const due = new Date(invoice.dueDate);
+      const due = dueOn(invoice.dueDate);
       return due >= today && due <= horizon;
     }).reduce((sum, invoice) => sum + invoice.amount, 0);
     const overdueRecovery = overdue * (collectionRate / 100) * Math.min(1, days / 30);
@@ -48,11 +53,11 @@ export function getCashForecast() {
     const outflow = Math.round(runRateInflow * 0.58);
     return { days, inflow, outflow, closing: available + inflow - outflow };
   });
-  return { expected: Math.round(expected), sevenDay, overdue, confidence: overdue ? 'Moderate' : 'High', collectionRate, projections, upcoming: invoices.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0,4) };
+  return { expected: Math.round(expected), sevenDay, overdue, confidence: overdue ? 'Moderate' : 'High', collectionRate, projections, upcoming: invoices.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0,5) };
 }
-export function getCustomerRiskScores() {
+export function getCustomerRiskScores(invoiceSource = demoData.invoices) {
   return demoData.customers.map(customer => {
-    const invoices = demoData.invoices.filter(invoice => invoice.customer === customer.name);
+    const invoices = invoiceSource.filter(invoice => invoice.customer === customer.name);
     const transactions = demoData.transactions.filter(transaction => transaction.customer === customer.name);
     const overdue = invoices.filter(invoice => invoice.status === 'OVERDUE');
     const failed = transactions.filter(transaction => transaction.status === 'FAILED');
